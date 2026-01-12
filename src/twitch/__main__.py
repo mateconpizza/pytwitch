@@ -9,7 +9,7 @@ from twitch import setup
 from twitch._exceptions import CONNECTION_EXCEPTION
 from twitch._exceptions import EXCEPTIONS
 
-# TODO)):
+# TODO:
 # - [X] ~Read https://dev.twitch.tv/docs/api/reference/#get-games~
 # - [ ] Replace `argsparse` with `click`
 # Config:

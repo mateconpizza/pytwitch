@@ -10,16 +10,16 @@
 
 ## Twitch Menu
 
-### ⭐ About
+### About
 
 A user-friendly tool for accessing and watching live streams, videos, and clips
 from Twitch.
 
-### 📼 Video
+### Video
 
-https://github.com/haaag/PyTwitch/assets/81921095/e8f07a06-d9dd-47e0-a6d4-f9fba455be16
+https://github.com/mateconpizza/PyTwitch/assets/81921095/e8f07a06-d9dd-47e0-a6d4-f9fba455be16
 
-### ⚡️ Requirements
+### Requirements
 
 - Player:
   - [mpv](https://mpv.io/)
@@ -28,12 +28,12 @@ https://github.com/haaag/PyTwitch/assets/81921095/e8f07a06-d9dd-47e0-a6d4-f9fba4
   - [dmenu](https://tools.suckless.org/dmenu/)
   - [fzf](https://github.com/junegunn/fzf)
 
-### 🔒Credentials
+### Credentials
 
 For authentication, you can set environment vars in your `shell` and export them or use the
 `.env` file and put it in the root of the project.
 
-[env-template](https://github.com/haaag/pytwitch/blob/main/env-template) file
+[env-template](https://github.com/mateconpizza/pytwitch/blob/main/env-template) file
 
 ```bash
 # Twitch credentials
@@ -42,17 +42,17 @@ TWITCH_ACCESS_TOKEN="xxx"
 TWITCH_USER_ID="123456"
 ```
 
-#### 🔓Credentials directions
+#### Credentials directions
 
 - [Twitch token generator](https://twitchtokengenerator.com/)
   - Scope: `user:read:follows`
 - [Twitch Channel ID and User ID Converter](https://www.streamweasels.com/tools/convert-twitch-username-to-user-id/)
 
-### 📦 Installation
+### Installation
 
 ```bash
 # Clone repository
-$ git clone "https://github.com/haaag/pytwitch.git"
+$ git clone "https://github.com/mateconpizza/pytwitch.git"
 $ cd pytwitch
 
 # Create virtual environment & source
@@ -66,7 +66,7 @@ $ source .venv/bin/activate
 (.venv) $ pip install .
 ```
 
-### 🛠️ Usage
+### Usage
 
 After installation you can use the command `pytwitch`
 
@@ -104,12 +104,12 @@ options:
 | **alt-g**     | show top games with streams |
 | ~~**alt-m**~~ | ~~multi-select streams~~    |
 
-### 🔗 References
+### References
 
 - [Twitch API](https://dev.twitch.tv/docs/api/)
 - [Twitch API Reference](https://dev.twitch.tv/docs/api/reference)
 
-### ➕ Dependencies
+### Dependencies
 
 - [httpx](https://www.python-httpx.org/)
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
@@ -118,7 +118,7 @@ options:
 - [pydantic](https://pypi.org/project/pydantic/)
 - [tenacity](https://pypi.org/project/tenacity/)
 
-### 🧰 TODO
+### TODO
 
 - [ ] Finish tests
 - [x] Create/Update requirements/dependencies

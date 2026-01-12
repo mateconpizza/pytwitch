@@ -28,6 +28,7 @@ def main() -> int:
         log.debug('arguments: %s', vars(args))
 
     menu = setup.menu(args)
+
     try:
         run = asyncio.run
         twitch = run(setup.app(menu, args))

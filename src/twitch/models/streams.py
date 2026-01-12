@@ -5,7 +5,8 @@ from __future__ import annotations
 from pydantic.dataclasses import dataclass
 from pyselector.colors import Color
 from pyselector.markup import PangoSpan
-from twitch import format
+
+from twitch import fmt
 from twitch.constants import LIVE_ICON
 from twitch.constants import TITLE_MAX_LENGTH
 from twitch.constants import TWITCH_CHAT_BASE_URL
@@ -43,12 +44,12 @@ class FollowedStream:
 
     @property
     def title_str(self) -> str:
-        title = format.sanitize(format.short(self.title, TITLE_MAX_LENGTH))
+        title = fmt.sanitize(fmt.short(self.title, TITLE_MAX_LENGTH))
         return PangoSpan(title, size='medium', foreground='grey', fg_ansi='white', markup=self.markup, ansi=self.ansi)
 
     @property
     def live_since(self) -> str:
-        since = format.calculate_live_time(self.started_at)
+        since = fmt.calculate_live_time(self.started_at)
         return PangoSpan(
             f'({since})',
             sub=True,
@@ -73,7 +74,7 @@ class FollowedStream:
 
     @property
     def viewers_fmt(self) -> str:
-        viewers = format.number(self.viewer_count)
+        viewers = fmt.number(self.viewer_count)
         return PangoSpan(
             viewers,
             size='medium',
@@ -90,7 +91,7 @@ class FollowedStream:
 
     @property
     def category(self) -> str:
-        game = format.sanitize(self.game_name) if self.markup else self.game_name
+        game = fmt.sanitize(self.game_name) if self.markup else self.game_name
         return PangoSpan(
             game,
             foreground='orange',

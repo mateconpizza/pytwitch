@@ -3,7 +3,8 @@ from __future__ import annotations
 from pydantic.dataclasses import dataclass
 from pyselector.colors import Color
 from pyselector.markup import PangoSpan
-from twitch import format
+
+from twitch import fmt
 from twitch.constants import LIVE_ICON
 from twitch.constants import TWITCH_API_BASE_URL
 from twitch.constants import TWITCH_CHAT_BASE_URL
@@ -57,7 +58,7 @@ class FollowedChannelInfo:
 
     @property
     def category(self) -> str:
-        game = format.sanitize(self.game_name)
+        game = fmt.sanitize(self.game_name)
         return PangoSpan(game, size='large', markup=self.markup)
 
     @property
@@ -218,7 +219,7 @@ class Channel:
     def category(self) -> str:
         foreground = Color.yellow() if self.is_live else Color.grey()
         fg_ansi = 'yellow' if self.is_live else 'white'
-        game = format.sanitize(self.game_name)
+        game = fmt.sanitize(self.game_name)
         return PangoSpan(
             game,
             foreground=foreground,

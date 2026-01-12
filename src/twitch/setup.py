@@ -62,6 +62,7 @@ def keybinds(t: TwitchApp) -> TwitchApp:
     keymap.add(bind=keys.search_by_game, action=t.show_by_game, hidden=True, description='search game by query')
     keymap.add(bind=keys.search_by_query, action=t.show_by_query, hidden=True, description='search channel by query')
     keymap.add(bind=keys.multiselection, action=t.multi_selection, hidden=True, description='enable multiselection')
+
     # Content
     keymap.add(bind=keys.top_streams, action=t.show_top_streams, hidden=True, description='show top streams')
     keymap.add(bind=keys.top_games, action=t.show_top_games, hidden=True, description='show top games')

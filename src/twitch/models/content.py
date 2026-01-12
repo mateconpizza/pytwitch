@@ -8,7 +8,7 @@ from pydantic.dataclasses import dataclass
 from pyselector.colors import Color
 from pyselector.markup import PangoSpan
 
-from twitch import format
+from twitch import fmt
 from twitch.constants import TITLE_MAX_LENGTH
 
 
@@ -49,7 +49,7 @@ class FollowedContentClip:
 
     @property
     def title_fmt(self) -> str:
-        title = format.sanitize(format.short(self.title, TITLE_MAX_LENGTH))
+        title = fmt.sanitize(fmt.short(self.title, TITLE_MAX_LENGTH))
         return PangoSpan(
             title,
             size='medium',
@@ -61,7 +61,7 @@ class FollowedContentClip:
 
     @property
     def viewers_fmt(self) -> str:
-        viewers = f'views: {format.number(self.view_count)}'
+        viewers = f'views: {fmt.number(self.view_count)}'
         return PangoSpan(
             viewers,
             size='medium',
@@ -92,7 +92,7 @@ class FollowedContentClip:
     @property
     def created_date(self) -> str:
         return PangoSpan(
-            format.date(self.created_at),
+            fmt.date(self.created_at),
             size='medium',
             foreground='orange',
             fg_ansi='yellow',
@@ -141,11 +141,11 @@ class FollowedContentVideo:
 
     @property
     def title_fmt(self) -> str:
-        title = format.sanitize(format.short(self.title, TITLE_MAX_LENGTH))
+        title = fmt.sanitize(fmt.short(self.title, TITLE_MAX_LENGTH))
         return PangoSpan(
             title,
             size='medium',
-            foreground=Color.white(),
+            foreground='grey',
             fg_ansi='white',
             markup=self.markup,
             ansi=self.ansi,
@@ -153,7 +153,7 @@ class FollowedContentVideo:
 
     @property
     def viewers_fmt(self) -> str:
-        viewers = format.number(self.view_count)
+        viewers = fmt.number(self.view_count)
         return PangoSpan(
             viewers,
             size='medium',
@@ -190,7 +190,7 @@ class FollowedContentVideo:
     @property
     def created_at_fmt(self) -> str:
         return PangoSpan(
-            format.date(self.created_at),
+            fmt.date(self.created_at),
             size='medium',
             weight='bold',
             foreground='orange',
@@ -202,7 +202,7 @@ class FollowedContentVideo:
 
     @property
     def published_fmt(self) -> str:
-        return format.date(self.published_at)
+        return fmt.date(self.published_at)
 
     def __str__(self) -> str:
         id_and_date = f'{self.item_id} {self.created_at_fmt}'

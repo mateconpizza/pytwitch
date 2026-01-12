@@ -2,13 +2,18 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from pydantic.dataclasses import dataclass
 from pyselector.colors import Color
 from pyselector.markup import PangoSpan
-from twitch import format
+
+from twitch import fmt
 from twitch.constants import LIVE_ICON
-from twitch.models.channels import FollowedChannelInfo  # noqa: TCH002
-from twitch.models.streams import FollowedStream  # noqa: TCH002
+
+if TYPE_CHECKING:
+    from twitch.models.channels import FollowedChannelInfo
+    from twitch.models.streams import FollowedStream
 
 
 @dataclass
@@ -34,7 +39,7 @@ class Category:
     def total_viewers_fmt(self) -> str:
         if self.channels_live() == 0:
             return ''
-        return format.number(self.total_viewers())
+        return fmt.number(self.total_viewers())
 
     def total_channels(self) -> int:
         return len(self.channels)
@@ -43,7 +48,7 @@ class Category:
         if self.channels_live() == 0:
             return ''
         return PangoSpan(
-            f'{format.number(self.total_viewers())} viewers',
+            f'{fmt.number(self.total_viewers())} viewers',
             font_variant='small-caps',
             size='small',
             weight='bold',
@@ -83,7 +88,7 @@ class Category:
 
     @property
     def name_fmt(self) -> str:
-        name = format.sanitize(self.name)
+        name = fmt.sanitize(self.name)
         return PangoSpan(name, weight='bold', size='large', fg_ansi='cyan', markup=self.markup, ansi=self.ansi)
 
     def online_str(self) -> str:
@@ -107,7 +112,7 @@ class Game:
 
     @property
     def name_str(self) -> str:
-        name = format.sanitize(self.name)
+        name = fmt.sanitize(self.name)
         return PangoSpan(name, weight='bold', size='medium', markup=self.markup, ansi=self.ansi)
 
     def __str__(self) -> str:

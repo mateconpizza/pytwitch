@@ -15,7 +15,7 @@ import sh
 
 from twitch import clipboard
 from twitch import config
-from twitch import format
+from twitch import fmt
 from twitch._exceptions import ChannelOfflineError
 from twitch._exceptions import ItemNotPlaylableError
 from twitch.constants import SEPARATOR
@@ -131,7 +131,7 @@ class TwitchApp:
 
         categories_sorted = sorted(categories.items(), key=lambda x: x[1].total_viewers(), reverse=True)
         mesg = f'> Showing ({len(categories)}) <games>'
-        category, keycode = self.select(items=dict(categories_sorted), mesg=mesg)
+        category, _ = self.select(items=dict(categories_sorted), mesg=mesg)
         if not category:
             return 1
 
@@ -239,9 +239,9 @@ class TwitchApp:
     async def show_item_info(self, **kwargs) -> int:
         self.menu.keybind.unregister_all()
         item: TwitchContent | TwitchChannel = kwargs['item']
-        item.title = format.sanitize(item.title)
+        item.title = fmt.sanitize(item.title)
         item_dict = asdict(item)
-        formatted_item = format.stringify(item_dict, sep=SEPARATOR)
+        formatted_item = fmt.stringify(item_dict, sep=SEPARATOR)
         formatted_item.insert(0, f"{'url':<18}{SEPARATOR}\t{item.url:<30}")
         selected, keycode = self.menu.select(
             items=formatted_item,
@@ -265,7 +265,7 @@ class TwitchApp:
         # Top games and top streams loop
         while True:
             mesg = f'> Showing {len(categories)} top categories '
-            mesg += f'({nchannels} streams and {format.number(nviewers)} viewers)'
+            mesg += f'({nchannels} streams and {fmt.number(nviewers)} viewers)'
             km.unregister_all()
             cat, keycode = self.select(items=categories, mesg=mesg)
             if not cat:
@@ -379,7 +379,7 @@ class TwitchApp:
             self.menu.select(items=['err: no items'], mesg=mesg, markup=False)
             return UserCancel(1)
 
-        streams, keycode = self.select(items=items, mesg=mesg, multi_select=True)
+        streams, _ = self.select(items=items, mesg=mesg, multi_select=True)
         if not streams:
             return UserCancel(1)
 

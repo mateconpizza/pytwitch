@@ -21,6 +21,7 @@ https://github.com/mateconpizza/PyTwitch/assets/81921095/e8f07a06-d9dd-47e0-a6d4
 
 ### Requirements
 
+- Python **≥ 3.11**
 - Player:
   - [mpv](https://mpv.io/)
 - Launcher:
@@ -50,6 +51,8 @@ TWITCH_USER_ID="123456"
 
 ### Installation
 
+#### Using `pip`
+
 ```bash
 # Clone repository
 $ git clone "https://github.com/mateconpizza/pytwitch.git"
@@ -66,30 +69,61 @@ $ source .venv/bin/activate
 (.venv) $ pip install .
 ```
 
+#### Using [`uv`](https://docs.astral.sh/uv)
+
+```bash
+# Clone repository
+git clone https://github.com/mateconpizza/pytwitch.git
+cd pytwitch
+
+# Create virtual environment
+uv venv .venv
+source .venv/bin/activate
+
+# Install
+uv pip install .
+```
+
 ### Usage
 
-After installation you can use the command `pytwitch`
+After installation, the command `pytwitch` is available in your `$PATH`
 
-Or use a **alias** like `alias pt='pytwitch -e ~/path/to/envfile/.env'`
+You may want to define an alias to always load your environment file:
+
+```bash
+alias pt='pytwitch -e ~/path/to/.env'
+```
+
+#### Environment configuration
+
+- If a `.env` file exists in the project `root`, it is loaded automatically.
+- You can explicitly specify a file using `--env`.
+
+#### Help
 
 ```bash
 $ pytwtich -h
-Simple tool menu for watching streams, videos from twitch.
+Simple tool menu for watching streams, videos from Twitch.
 
 arguments:
-    -m, --menu          select menu [rofi|dmenu] (default: rofi)
-    -e, --env           path to env file
-    -C, --channel       search by channel query
-    -G, --games         search by game or category
-    -v, --verbose       increase verbosity (use -v, -vv, or -vvv)
-    -h, --help          show this help
+  -m, --menu          select menu [rofi|dmenu|fzf] (default: rofi)
+  -e, --env           path to env file
+  -C, --channel       search by channel query
+  -G, --games         search by game or category
+  -v, --verbose       increase verbosity (-v, -vv, or -vvv)
+  -h, --help          show this help
 
 options:
-    --no-markup         disable pango markup (rofi)
-    --no-conf           disable `mpv` configuration
+  --no-markup         disable pango markup (rofi)
+  --no-ansi           disable ANSI color codes (fzf)
+  --no-conf           disable mpv configuration
 ```
 
-### ⌨️ Keybinds <sub>_Rofi only_</sub>
+```bash
+pytwitch --env ~/secrets/twitch.env
+```
+
+### Keybinds <sub>_Rofi only_</sub>
 
 | Keybind       | Usage                       |
 | ------------- | --------------------------- |
@@ -120,6 +154,7 @@ options:
 
 ### TODO
 
+- [ ] Find a better and easy way to get the credentials <sub>_priority_</sub>
 - [ ] Finish tests
 - [x] Create/Update requirements/dependencies
 - [x] Complete Usage

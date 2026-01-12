@@ -9,7 +9,7 @@ readme = "README.md"
 keywords = ["cli", "dmenu", "rofi", "twitch", "utility"]
 license = { file = "LICENSE.txt" }
 authors = [{ name = "mateconpizza", email = "81921095+mateconpizza@users.noreply.github.com" }]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dynamic = ["version"]
 dependencies = [
   "pyselector==0.0.41",

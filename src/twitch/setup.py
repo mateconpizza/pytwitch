@@ -10,11 +10,13 @@ from typing import Any
 from pyselector import Menu
 
 from twitch import config
-from twitch import constants
 from twitch.api import Credentials
 from twitch.api import TwitchApi
 from twitch.app import TwitchApp
 from twitch.client import TwitchFetcher
+from twitch.constants import DEFAULT_KEYBINDS
+from twitch.constants.help import HELP_TEXT
+from twitch.constants.path import CONFIGFILE
 
 if TYPE_CHECKING:
     from pyselector.interfaces import MenuInterface
@@ -23,12 +25,7 @@ log = logging.getLogger(__name__)
 
 
 def args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.RawTextHelpFormatter,
-        epilog=constants.HELP,
-        description=constants.DESC,
-        add_help=False,
-    )
+    parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, epilog=HELP_TEXT, add_help=False)
 
     opts_group = parser.add_argument_group(title='options')
     opts_group.add_argument('--no-markup', action='store_false')
@@ -53,7 +50,7 @@ def args() -> argparse.Namespace:
 
 
 def keybinds(t: TwitchApp) -> TwitchApp:
-    keys = config.get_keybinds(constants.CONFIGFILE, constants.DEFAULT_KEYBINDS)
+    keys = config.get_keybinds(CONFIGFILE, DEFAULT_KEYBINDS)
     keymap = t.menu.keybind
     keymap.add(bind=keys.group_by_cat, action=t.show_group_by_cat, hidden=True, description='show by games')
     keymap.add(bind=keys.show_information, action=t.show_item_info, hidden=True, description='display item info')
@@ -93,7 +90,7 @@ async def test(**kwargs: Any) -> int:  # noqa: ARG001
 
 async def app(menu: MenuInterface, args: argparse.Namespace) -> TwitchApp:
     credentials = Credentials.load(args.env)
-    credentials.validate()
+    credentials.validation()
     api = TwitchApi(credentials)
     fetcher = TwitchFetcher(api)
     await fetcher.api.load_client()
@@ -101,11 +98,7 @@ async def app(menu: MenuInterface, args: argparse.Namespace) -> TwitchApp:
         fetcher=fetcher,
         menu=menu,
         player_conf=args.no_conf,
-        keys=config.get_keybinds(constants.CONFIGFILE, constants.DEFAULT_KEYBINDS),
+        keys=config.get_keybinds(CONFIGFILE, DEFAULT_KEYBINDS),
         markup=args.no_markup,
         ansi=args.no_ansi,
     )
-
-
-def help() -> None:  # noqa: A001
-    print(constants.HELP)

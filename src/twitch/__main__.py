@@ -1,26 +1,23 @@
 from __future__ import annotations
 
-import asyncio
-import logging
 import sys
-
-from twitch import logger
-from twitch import setup
-from twitch._exceptions import CONNECTION_EXCEPTION
-from twitch._exceptions import EXCEPTIONS
-
-# TODO:
-# - [X] ~Read https://dev.twitch.tv/docs/api/reference/#get-games~
-# - [ ] Replace `argsparse` with `click`
-# Config:
-# - [X] Move config yaml file into $XDG_CONFIG_HOME
 
 
 def main() -> int:
-    args = setup.args()
-    if args.help:
-        setup.help()
+    if '-h' in sys.argv or '--help' in sys.argv:
+        from twitch.constants.help import HELP_TEXT
+
+        print(HELP_TEXT)  # noqa: T201
         return 0
+
+    import asyncio
+    import logging
+
+    import twitch._exceptions as exc
+    from twitch import logger
+    from twitch import setup
+
+    args = setup.args()
 
     logger.verbose(args.verbose)
     log = logging.getLogger(__name__)
@@ -41,12 +38,15 @@ def main() -> int:
         if args.games:
             return run(twitch.show_by_game())
         return run(twitch.show_all_streams())
-    except (*CONNECTION_EXCEPTION, *EXCEPTIONS) as err:
+
+    except (*exc.CONNECTION_EXCEPTION, *exc.EXCEPTIONS) as err:
         menu.keybind.unregister_all()
         menu.select(items=[f'{err!r}'], markup=False, prompt='PyTwitchErr>')
         log.error(err)
+
     except KeyboardInterrupt:
         log.info('terminated by user')
+
     return 1
 
 

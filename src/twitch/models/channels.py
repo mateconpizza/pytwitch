@@ -6,9 +6,9 @@ from pyselector.markup import PangoSpan
 
 from twitch import fmt
 from twitch.constants import LIVE_ICON
-from twitch.constants import TWITCH_API_BASE_URL
-from twitch.constants import TWITCH_CHAT_BASE_URL
-from twitch.constants import TWITCH_STREAM_BASE_URL
+from twitch.constants.api import TWITCH_API_BASE_URL
+from twitch.constants.api import TWITCH_CHAT_BASE_URL
+from twitch.constants.api import TWITCH_STREAM_BASE_URL
 
 
 @dataclass

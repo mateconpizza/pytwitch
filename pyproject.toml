@@ -134,6 +134,7 @@ required-imports = ["from __future__ import annotations"]
 "src/twitch/__about__.py" = ["I002"]
 "src/twitch/setup.py" = ["T201"]
 "src/twitch/app.py" = ["FBT003"]
+"src/twitch/__main__.py" = ["PLC0415"]
 "tests/**/*" = [
   "S101",   # use of `assert` detected
   "ARG002", # unused-method-argument

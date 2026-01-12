@@ -20,7 +20,7 @@ from tenacity import stop_after_attempt
 from tenacity import wait_fixed
 
 from twitch._exceptions import EnvValidationError
-from twitch.constants import TWITCH_API_BASE_URL
+from twitch.constants.api import TWITCH_API_BASE_URL
 
 if typing.TYPE_CHECKING:
     from twitch.datatypes import HeaderTypes
@@ -85,7 +85,7 @@ class Credentials(BaseModel):
     def to_dict(self) -> dict[str, str]:
         return self.__dict__
 
-    def validate(self) -> None:
+    def validation(self) -> None:
         return _validate_credentials(self.to_dict())
 
     @classmethod

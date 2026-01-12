@@ -19,7 +19,6 @@ dependencies = [
   "pydantic==2.7.4",
   "tenacity==8.4.2",
   "PyYAML==6.0.1",
-  "click==8.1.7",
 ]
 
 [tool.hatch.build.targets.wheel]

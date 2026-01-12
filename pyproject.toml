@@ -15,7 +15,7 @@ dependencies = [
   "pyselector==0.0.41",
   "httpx==0.23.3",
   "python-dotenv",
-  "sh==2.0.7",
+  "sh>=2.2.2",
   "pydantic==2.7.4",
   "tenacity==8.4.2",
   "PyYAML==6.0.1",
@@ -26,7 +26,6 @@ packages = ["src/twitch"]
 
 [project.scripts]
 pytwitch = "twitch.__main__:main"
-tt = "twitch.cli:cli"
 
 [tool.hatch.version]
 path = "src/twitch/__about__.py"

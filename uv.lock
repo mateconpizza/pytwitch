@@ -227,7 +227,7 @@ requires-dist = [
     { name = "pyselector", specifier = "==0.0.41" },
     { name = "python-dotenv" },
     { name = "pyyaml", specifier = "==6.0.1" },
-    { name = "sh", specifier = "==2.0.7" },
+    { name = "sh", specifier = ">=2.2.2" },
     { name = "tenacity", specifier = "==8.4.2" },
 ]
 
@@ -270,11 +270,11 @@ idna2008 = [
 
 [[package]]
 name = "sh"
-version = "2.0.7"
+version = "2.2.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/14/7a/5148402146d360a6d15922814a3b065b52be3a5fe878a8834d3ce4e7d33f/sh-2.0.7.tar.gz", hash = "sha256:029d45198902bfb967391eccfd13a88d92f7cebd200411e93f99ebacc6afbb35", size = 345477, upload-time = "2024-06-01T16:36:57.145Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/59/52/f43920223c93e31874677c681b8603d36a40d3d8502d3a37f80d3995d43e/sh-2.2.2.tar.gz", hash = "sha256:653227a7c41a284ec5302173fbc044ee817c7bad5e6e4d8d55741b9aeb9eb65b", size = 345866, upload-time = "2025-02-24T07:16:25.363Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/15/c2/79f9dea6fc544c0eb79ed5018a38860c52d597c4be66c2cf2029bea5b3fd/sh-2.0.7-py3-none-any.whl", hash = "sha256:2f2f79a65abd00696cf2e9ad26508cf8abb6dba5745f40255f1c0ded2876926d", size = 38103, upload-time = "2024-06-01T16:36:54.323Z" },
+    { url = "https://files.pythonhosted.org/packages/70/98/d82f14ac7ffedbd38dfa2383f142b26d18d23ca6cf35a40f4af60df666bd/sh-2.2.2-py3-none-any.whl", hash = "sha256:e0b15b4ae8ffcd399bc8ffddcbd770a43c7a70a24b16773fbb34c001ad5d52af", size = 38295, upload-time = "2025-02-24T07:16:23.782Z" },
 ]
 
 [[package]]

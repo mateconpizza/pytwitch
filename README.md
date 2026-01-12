@@ -8,12 +8,16 @@
 
 </div>
 
-## Twitch Menu
+## 🟣Twitch Menu
 
 ### About
 
 A user-friendly tool for accessing and watching live streams, videos, and clips
 from Twitch.
+
+> [!NOTE]
+> Playback via `mpv` uses Twitch’s public streams.
+> Twitch Prime does not guarantee ad-free playback outside the official web player.
 
 ### Video
 
@@ -27,7 +31,7 @@ https://github.com/mateconpizza/PyTwitch/assets/81921095/e8f07a06-d9dd-47e0-a6d4
 - Launcher:
   - 🔹[Rofi](https://github.com/davatorium/rofi) <sub>_(default)_</sub>
   - [dmenu](https://tools.suckless.org/dmenu/)
-  - [fzf](https://github.com/junegunn/fzf)
+  - [fzf](https://github.com/junegunn/fzf) <sub>_WIP_</sub>
 
 ### Credentials
 

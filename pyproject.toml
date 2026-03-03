@@ -12,13 +12,13 @@ authors = [{ name = "mateconpizza", email = "81921095+mateconpizza@users.noreply
 requires-python = ">=3.11"
 dynamic = ["version"]
 dependencies = [
-  "pyselector==0.0.41",
   "httpx==0.23.3",
   "python-dotenv",
   "sh>=2.2.2",
   "pydantic==2.7.4",
   "tenacity==8.4.2",
   "PyYAML==6.0.1",
+  "pyselector>=0.0.42",
 ]
 
 [tool.hatch.build.targets.wheel]
